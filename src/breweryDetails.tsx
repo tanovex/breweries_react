@@ -2,12 +2,8 @@ import React from 'react'
 import { Button } from 'react-bootstrap';
 import { Brewery } from './api/openBreweryDBapi';
 import { formatAddress } from './breweryList';
-import GoogleMapReact from 'google-map-react';
+import GoogleMapReact, { Coords } from 'google-map-react';
 
-type GeoPoint = {
-    lat: number,
-    lng: number,
-};
 type AnyReactComponentProp = {
     text: string, 
     lat: number, 
@@ -18,11 +14,6 @@ const AnyReactComponent = (prop: AnyReactComponentProp) => <div>{prop.text}</div
 
 // breweryDetails
 const breweryDetails = (brewery : Brewery | null, handleClick : () => void) => {
-    let center : GeoPoint = {
-        lat: brewery?.latitude as number,
-        lng: brewery?.longitude as number,
-    };
-
     return (
         <>
       
@@ -49,13 +40,16 @@ const breweryDetails = (brewery : Brewery | null, handleClick : () => void) => {
                     <div className="mapBox">
                         <GoogleMapReact
                             bootstrapURLKeys={{ key: "AIzaSyBf4ukSReMSF1-XQWqb6PqzwMXJsOogRZo" }}
-                            defaultCenter={{center}}
+                            defaultCenter={{
+                                lat: brewery?.latitude as number,
+                                lng: brewery?.longitude as number,
+                            } as Coords}
                             defaultZoom={11 as number}
                         >
 
                         <AnyReactComponent
-                            lat={59.955413}
-                            lng={30.337844}
+                            lat={brewery?.latitude as number}
+                            lng={brewery?.longitude as number}
                             text="My Marker"
                         />
                         
