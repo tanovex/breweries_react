@@ -78,10 +78,12 @@ const breweryList = (breweries : Brewery[], handleClick : (id: number) => void) 
  
 
     return (    
-        <div className="container my-6">
+        <div className="container my-5">
             <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-                <div className="list-group">
-                    {rows}
+                <div className="col-lg-12 p-3 p-lg-5 pt-lg-3">
+                    <div className="list-group">
+                        {rows}
+                    </div>
                 </div>
             </div>
         </div>

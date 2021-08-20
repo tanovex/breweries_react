@@ -40,17 +40,19 @@ const breweryDetails = (brewery : Brewery | null, handleClick : () => void) => {
                     <div className="mapBox">
                         <GoogleMapReact
                             bootstrapURLKeys={{ key: "AIzaSyBf4ukSReMSF1-XQWqb6PqzwMXJsOogRZo" }}
-                            defaultCenter={{
-                                lat: brewery?.latitude as number,
-                                lng: brewery?.longitude as number,
-                            } as Coords}
+                            defaultCenter={
+                                {
+                                    lat: brewery?.latitude as number,
+                                    lng: brewery?.longitude as number
+                                } as Coords
+                            }
                             defaultZoom={11 as number}
                         >
 
                         <AnyReactComponent
                             lat={brewery?.latitude as number}
                             lng={brewery?.longitude as number}
-                            text="My Marker"
+                            text={brewery?.name as string}
                         />
                         
                         </GoogleMapReact>
