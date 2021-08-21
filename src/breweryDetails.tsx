@@ -26,7 +26,7 @@ const breweryDetails = (brewery : Brewery | null, handleClick : () => void) => {
                 </svg>
             </Button>
             <div className="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
-                <div className="col-lg-7 p-3 p-lg-5 pt-lg-3">
+                <div className="col-lg-12 p-3 p-lg-5 pt-lg-3">
                     <small className="text-end">{brewery?.brewery_type}</small>
                     <h1 className="display-4 fw-bold lh-1">{brewery?.name}</h1>
                     
@@ -42,16 +42,16 @@ const breweryDetails = (brewery : Brewery | null, handleClick : () => void) => {
                             bootstrapURLKeys={{ key: "AIzaSyBf4ukSReMSF1-XQWqb6PqzwMXJsOogRZo" }}
                             defaultCenter={
                                 {
-                                    lat: brewery?.latitude as number,
-                                    lng: brewery?.longitude as number
+                                    lat: (brewery?.latitude as number) * 1.0,
+                                    lng: (brewery?.longitude as number) * 1.0
                                 } as Coords
                             }
-                            defaultZoom={11 as number}
+                            defaultZoom={15 as number}
                         >
 
                         <AnyReactComponent
-                            lat={brewery?.latitude as number}
-                            lng={brewery?.longitude as number}
+                            lat={(brewery?.latitude as number) *1.0}
+                            lng={(brewery?.longitude as number) *1.0}
                             text={brewery?.name as string}
                         />
                         
