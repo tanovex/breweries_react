@@ -10,7 +10,10 @@ type AnyReactComponentProp = {
     lng: number
 };
 
-const AnyReactComponent = (prop: AnyReactComponentProp) => <div>{prop.text}</div>;
+const AnyReactComponent = (prop: AnyReactComponentProp) => (<>
+    <div className="pin"></div>
+    <div className="pulse"></div>
+</>);
 
 // breweryDetails
 const breweryDetails = (brewery : Brewery | null, handleClick : () => void) => {
@@ -48,10 +51,10 @@ const breweryDetails = (brewery : Brewery | null, handleClick : () => void) => {
                             }
                             defaultZoom={15 as number}
                         >
-
+                        
                         <AnyReactComponent
-                            lat={(brewery?.latitude as number) *1.0}
-                            lng={(brewery?.longitude as number) *1.0}
+                            lat={(brewery?.latitude as number) * 1.0}
+                            lng={(brewery?.longitude as number) * 1.0}
                             text={brewery?.name as string}
                         />
                         
